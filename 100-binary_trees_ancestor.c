@@ -7,27 +7,25 @@
  * Return: NULL or nux.
  */
 
+
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 		const binary_tree_t *second)
 {
-	binary_tree_t *x, *p;
+	binary_tree_t *p1, *p2;
 
 	if (!first || !second)
 		return (NULL);
-
-
 	if (first == second)
 		return ((binary_tree_t *)first);
 
 
-	x = first->parent, p = second->parent;
+	p1 = first->parent, p2 = second->parent;
+
+	if (first == p2 || !p1 || (!p1->parent && p2))
+		return (binary_trees_ancestor(first, p2));
+	else if (p1 == second || !p2 || (!p2->parent && p1))
+		return (binary_trees_ancestor(p1, second));
 
 
-	if (first == p || !x || (!x->parent && p))
-		return (binary_trees_ancestor(first, p));
-	else if (x == second || !p || (!p->parent && x))
-		return (binary_trees_ancestor(x, second));
-
-
-	return (binary_trees_ancestor(x, p));
+	return (binary_trees_ancestor(p1, p2));
 }
