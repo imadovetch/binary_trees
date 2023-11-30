@@ -64,4 +64,6 @@ binary_tree_t *binary_tree_uncle(binary_tree_t *node);
 int binary_tree_is_full(const binary_tree_t *tree);
 int reverse_full(const binary_tree_t *tree);
 int binary_tree_balance(const binary_tree_t *tree);
+binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
+const binary_tree_t *second)
 #endif
